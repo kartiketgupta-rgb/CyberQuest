@@ -1,0 +1,16 @@
+CYBERQUEST UPGRADED
+
+1) Backend: cd backend
+2) npm install
+3) Put your real Gemini API key in backend/.env
+4) MySQL Workbench: run backend/setup.sql
+5) Seed: npm run seed
+6) Start: npm start
+7) Frontend: open frontend/index.html with VS Code Live Server
+
+Expected backend:
+DB Connected
+Questions cached: 1200
+Server running on 3000
+
+Game: 20 questions = 5 Easy + 5 Medium + 5 Hard + 5 Expert. Timed Mode = 60 sec/question; Pause/Resume available.

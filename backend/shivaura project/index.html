@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Quest - Hacker vs Defender</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>🛡️ CYBER QUEST</h1>
+    <h3>Hacker vs Defender</h3>
+
+    <div class="stats">
+      <div>❤️ System Health: <span id="health">100</span>%</div>
+      <div>⏱️ Time Left: <span id="time">15</span>s</div>
+      <div>🎯 Level: <span id="level">1</span></div>
+    </div>
+
+    <div>🛡️ Shields Left: <span id="shield">3</span></div>
+    <div>🧮 Shields Used: <span id="shieldUsed">0</span></div>
+
+    <div class="name-entry">
+      <input id="playerName" type="text" placeholder="Enter your name" autocomplete="off">
+      <button id="startBtn" onclick="startGame()">▶️ Start Game</button>
+    </div>
+    <div id="playerGreeting" class="greeting"></div>
+
+    <div class="controls" style="display:none;" id="gameControls">
+      <button id="shieldBtn" onclick="useShield()">🛡️ Use Shield</button>
+    </div>
+
+    <div id="question" class="question" style="display:none;"></div>
+
+    <div id="options" class="options" style="display:none;"></div>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <div id="leaderboardSection" class="leaderboard" style="display:none; margin-top: 20px;">
+    <h2>Leaderboard</h2>
+    <table id="leaderboardTable">
+      <thead>
+        <tr><th>Player</th><th>Score</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

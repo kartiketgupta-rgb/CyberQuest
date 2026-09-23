@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberQuest — Hacker vs Defender</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ─── HEADER ──────────────────────────────────── -->
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#" class="nav-logo">⚡ CYBER<span>QUEST</span></a>
+      <ul class="nav-links">
+       <nav>
+    <a href="index.html">Play</a>
+    <a href="#ai">AI Expert</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="theory.html">Theory</a>
+</nav>
+      </ul>
+      <a href="#play" class="nav-cta">Play Now</a>
+    </nav>
+  </header>
+
+  <!-- ─── HERO ────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🛡️ Cybersecurity Learning Game</div>
+      <h1 class="hero-title">
+        Defend.<br>
+        <span>Learn.</span><br>
+        Dominate.
+      </h1>
+      <p class="hero-sub">
+        Answer cybersecurity questions under pressure, block hacker attacks, and
+        level up your knowledge with a real AI security expert. Can you protect the system?
+      </p>
+      <div class="hero-ctas">
+        <a href="#play" class="btn-hero-primary">▶ Start Playing</a>
+        <a href="#ai-expert" class="btn-hero-secondary">🤖 Ask AI Expert</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <span class="hs-num">20</span>
+          <span class="hs-label">Questions</span>
+        </div>
+        <div class="hs-divider"></div>
+        <div class="hero-stat-item">
+          <span class="hs-num">3</span>
+          <span class="hs-label">Shields</span>
+        </div>
+        <div class="hs-divider"></div>
+        <div class="hero-stat-item">
+          <span class="hs-num">AI</span>
+          <span class="hs-label">Expert</span>
+        </div>
+        <div class="hs-divider"></div>
+        <div class="hero-stat-item">
+          <span class="hs-num">Live</span>
+          <span class="hs-label">Board</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES ────────────────────────────────── -->
+  <section class="features-section">
+    <div class="section-wrap centered">
+      <div class="section-eyebrow">HOW IT WORKS</div>
+      <h2 class="section-title">Learn by Doing</h2>
+      <p class="section-sub">Three things that make CyberQuest different from a boring security course.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎮</div>
+          <h3>Play &amp; Defend</h3>
+          <p>Answer cybersecurity questions before the timer runs out. Right answer = attack blocked. Wrong answer = system damage.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AI Security Expert</h3>
+          <p>Chat with CyberShield AI — your personal cybersecurity expert. Ask anything about threats, passwords, hacking, or privacy.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Compete &amp; Climb</h3>
+          <p>Your score = your final system health. The higher it is, the better you played. See where you rank live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GAME SECTION ─────────────────────────────── -->
+  <section class="page-section" id="play">
+    <div class="section-wrap">
+      <div class="section-eyebrow">CHALLENGE</div>
+      <h2 class="section-title">Play the Game</h2>
+      <p class="section-sub">Answer fast. Defend your system. Use shields wisely. Don't let the hackers win.</p>
+
+      <div class="game-container">
+
+        <div class="header">
+          <div class="logo">⚡ CYBER<span>QUEST</span></div>
+          <p class="tagline">Hacker vs Defender</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">System Health</div>
+            <div class="health-bar-track">
+              <div class="health-bar" id="healthBar"></div>
+            </div>
+            <div class="stat-value health-value"><span id="health">100</span>%</div>
+          </div>
+          <div class="stat-card timer-card" id="timerCard">
+            <div class="stat-label">Time Left</div>
+            <div class="timer-ring" id="timerRing">
+              <span id="time">60</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Level</div>
+            <div class="stat-value level-value"><span id="level">1</span></div>
+          </div>
+        </div>
+
+        <div class="shields-row">
+          <div class="shields-left">
+            <div class="shield-icons" id="shieldIcons">
+              <span class="shield-icon">🛡️</span>
+              <span class="shield-icon">🛡️</span>
+              <span class="shield-icon">🛡️</span>
+            </div>
+            <span class="shield-count"><span id="shield">3</span> shields left</span>
+          </div>
+          <span class="used-badge">Used: <span id="shieldUsed">0</span></span>
+        </div>
+
+        <div class="name-entry" id="nameEntry">
+          <input id="playerName" type="text" placeholder="Enter your name, defender..." autocomplete="off">
+          <div class="mode-controls" id="modeControls">
+            <label class="mode-toggle"><input id="timedMode" type="checkbox" checked onchange="timedMode=this.checked;setModeUI()"><span>⏱️ Timed Mode</span></label>
+            <span id="modeLabel">60s / question</span>
+          </div>
+          <button id="startBtn" onclick="startGame()">▶ ENTER THE GAME</button>
+
+          <!-- ========================================= -->
+<!-- SINGLE PLAYER GAME AREA -->
+<!-- ========================================= -->
+
+<div id="gameControls" style="display:none;">
+
+  <div
+    id="question"
+    class="question"
+    style="margin-top:25px;"
+  >
+    Question will appear here...
+  </div>
+
+  <div
+    id="options"
+    class="options"
+  >
+  </div>
+
+  <div
+    id="message"
+    class="message"
+  >
+  </div>
+
+  <div
+    style="
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-top:15px;
+      flex-wrap:wrap;
+    "
+  >
+
+    <button
+      id="shieldBtn"
+      type="button"
+      onclick="useShield()"
+    >
+      🛡️ USE SHIELD
+    </button>
+
+    <button
+      id="pauseBtn"
+      type="button"
+      onclick="togglePause()"
+      style="display:none;"
+    >
+      ⏸ Pause
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ─── MULTIPLAYER BATTLE ───────────────────── -->
+      
+<div class="multiplayer-card" id="multiplayerCard">
+
+  <!-- MULTIPLAYER LOBBY -->
+  <div id="multiplayerLobby">
+
+    <div class="mp-badge">⚔️ 1V1 BATTLE</div>
+
+    <h3>Cyber Battle</h3>
+
+    <p>
+      Challenge another defender in a real-time cybersecurity battle.
+    </p>
+
+    <div class="mp-buttons">
+
+      <button id="createRoomBtn" onclick="createRoom()">
+        🏠 CREATE ROOM
+      </button>
+
+      <button id="joinRoomBtn" onclick="showJoinRoom()">
+        🔗 JOIN ROOM
+      </button>
+
+    </div>
+
+    <!-- JOIN ROOM AREA -->
+    <div id="joinRoomArea" style="display:none;">
+
+      <input
+        <input
+  id="roomCodeInput"
+  type="text"
+  maxlength="6"
+  minlength="5"
+  placeholder="Enter 5-character room code"
+  autocomplete="off"
+  style="text-transform:uppercase;"
+>
+      >
+
+      <button onclick="joinRoom()">
+        ⚔️ JOIN BATTLE
+      </button>
+
+    </div>
+
+    <!-- ROOM STATUS -->
+    <div id="roomStatus" class="room-status"></div>
+
+    <!-- PLAYERS -->
+    <div id="playersArea">
+
+      <div id="player1">
+        🛡️ Waiting for Player 1...
+      </div>
+
+      <div>VS</div>
+
+      <div id="player2">
+        ⚔️ Waiting for Player 2...
+      </div>
+
+    </div>
+
+    <!-- START BUTTON -->
+   <button
+  id="startBattleBtn"
+  onclick="startBattle()"
+>
+  ⚡ START BATTLE
+</button>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- MULTIPLAYER ACTUAL GAME -->
+  <!-- ========================================= -->
+
+  <div
+    id="multiplayerGame"
+    style="display:none;"
+  >
+
+    <div class="mp-badge">
+      ⚔️ LIVE 1V1 BATTLE
+    </div>
+
+    <h3 id="battleTitle">
+      Cyber Battle
+    </h3>
+
+    <div id="battleStatus">
+      🔴 Battle starting...
+    </div>
+
+
+    <!-- PLAYERS HEALTH -->
+
+    <div class="mp-health-container">
+
+      <div class="mp-player">
+
+        <div id="mpPlayer1Name">
+          🛡️ Player 1
+        </div>
+
+        <div class="health-bar-track">
+
+          <div
+            id="mpPlayer1Health"
+            class="health-bar"
+            style="width:100%;"
+          ></div>
+
+        </div>
+
+        <strong>
+          <span id="mpPlayer1HealthText">100</span>%
+        </strong>
+
+      </div>
+
+
+      <div class="mp-vs">
+        VS
+      </div>
+
+
+      <div class="mp-player">
+
+        <div id="mpPlayer2Name">
+          ⚔️ Player 2
+        </div>
+
+        <div class="health-bar-track">
+
+          <div
+            id="mpPlayer2Health"
+            class="health-bar"
+            style="width:100%;"
+          ></div>
+
+        </div>
+
+        <strong>
+          <span id="mpPlayer2HealthText">100</span>%
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- QUESTION -->
+
+    <div
+      id="mpQuestion"
+      class="question"
+    >
+      Loading battle question...
+    </div>
+
+
+    <!-- OPTIONS -->
+
+    <div
+      id="mpOptions"
+      class="options"
+    >
+    </div>
+
+
+    <!-- BATTLE MESSAGE -->
+
+    <div
+      id="mpMessage"
+      class="message"
+    >
+    </div>
+
+
+    <!-- OPPONENT STATUS -->
+
+    <div
+      id="opponentStatus"
+      style="margin-top:15px;"
+    >
+      🟢 Waiting for opponent...
+    </div>
+
+  </div>
+
+</div>
+  <!-- ─── AI CHAT SECTION ──────────────────────────── -->
+  <section class="page-section ai-section" id="ai-expert">
+    <div class="section-wrap wide">
+      <div class="section-eyebrow">AI POWERED</div>
+      <h2 class="section-title">Meet CyberShield AI</h2>
+      <p class="section-sub">Your personal cybersecurity expert, available 24/7. Ask anything — how attacks work, how to stay safe, what tools to use.</p>
+
+      <div class="chat-section">
+
+        <div class="chat-header">
+          <div class="chat-avatar">🤖</div>
+          <div class="chat-info">
+            <div class="chat-name">CyberShield AI</div>
+            <div class="chat-status"><span class="status-dot"></span> Online · Cybersecurity Expert</div>
+          </div>
+          <div class="chat-powered">Gemini 2.5 Flash</div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <div class="chat-chips" id="chatChips">
+          <button class="chip" onclick="sendChip('What is phishing?')">What is phishing?</button>
+          <button class="chip" onclick="sendChip('How to make a strong password?')">Strong passwords</button>
+          <button class="chip" onclick="sendChip('What is 2FA and why does it matter?')">What is 2FA?</button>
+          <button class="chip" onclick="sendChip('Explain ransomware in simple terms')">Ransomware</button>
+          <button class="chip" onclick="sendChip('What is a VPN and do I need one?')">VPN explained</button>
+        </div>
+
+        <div class="chat-input-row">
+          <input type="text" id="chatInput" placeholder="Ask anything about cybersecurity..." autocomplete="off">
+          <button id="chatSendBtn" onclick="sendMessage()" aria-label="Send message">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LEADERBOARD SECTION ──────────────────────── -->
+  <section class="page-section" id="leaderboard">
+    <div class="section-wrap">
+      <div class="section-eyebrow">TOP DEFENDERS</div>
+      <h2 class="section-title">Leaderboard</h2>
+      <p class="section-sub">The best defenders in the game. Play to add your name.</p>
+
+      <div id="leaderboardSection" class="leaderboard">
+        <table id="leaderboardTable">
+          <thead>
+            <tr><th>#</th><th>Player</th><th>Score</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3" class="lb-empty">Play a game to appear here!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ───────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">⚡ CYBER<span>QUEST</span></div>
+          <p class="footer-tagline">Learn cybersecurity by defending against hackers.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#play">Play</a>
+          <a href="#ai-expert">AI Expert</a>
+          <a href="#leaderboard">Leaderboard</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 CyberQuest · Built to make the internet safer, one defender at a time.</p>
+      </div>
+    </div>
+  </footer>
+
+ <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+body {
+  background: radial-gradient(circle at top, #020024, #090979, #000);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.game-container {
+  max-width: 700px;
+  margin: auto;
+  background: rgba(0,0,0,0.75);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 0 25px cyan;
+}
+
+h1 {
+  color: cyan;
+  letter-spacing: 2px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+.question {
+  font-size: 22px;
+  margin: 25px 0;
+}
+
+.options button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  background: linear-gradient(135deg, #00ffff, #00bcd4);
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.options button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #00bcd4, #00ffff);
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Buttons container */
+.controls {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* 👈 vertical kar diya */
+  align-items: center;
+  gap: 15px; /* space between buttons */
+}
+
+/* Start Button */
+#startBtn {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00ffcc, #00bcd4);
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 200px;
+}
+
+#startBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Shield Button */
+#shieldBtn {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffcc00, #ff9800);
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 200px;
+}
+
+#shieldBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Disabled state */
+#shieldBtn:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+.game-container {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.options button:active {
+  transform: scale(0.97);
+}
+.options button {
+  transition: all 0.25s ease;
+}
+
+/* Scoreboard Styles */
+.scoreboard {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+  border-radius: 16px;
+  box-shadow: 0 0 20px cyan;
+}
+
+.scoreboard h2 {
+  color: cyan;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.current-score {
+  background: rgba(0, 255, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #00ff00;
+}
+
+.current-score h3 {
+  margin: 0;
+  color: #00ff00;
+  text-align: center;
+}
+
+.previous-scores {
+  margin-bottom: 20px;
+}
+
+.previous-scores h3 {
+  color: #ffff00;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.user-scores-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.user-scores-table th,
+.user-scores-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid cyan;
+}
+
+.user-scores-table th {
+  background: rgba(0, 255, 255, 0.2);
+  color: cyan;
+  font-weight: bold;
+}
+
+.user-scores-table td {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.scoreboard-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.scoreboard-buttons button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00ffcc, #00bcd4);
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.scoreboard-buttons button:hover {
+  transform: scale(1.05);
+}

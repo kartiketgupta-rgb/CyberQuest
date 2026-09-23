@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CyberQuest - Cyber Theory</title>
+
+    <link rel="stylesheet" href="theory.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        ⚡ <span>CYBER<span class="blue">QUEST</span></span>
+    </div>
+
+    <nav>
+        <a href="index.html">Play</a>
+        <a href="index.html#ai">AI Expert</a>
+        <a href="index.html#leaderboard">Leaderboard</a>
+        <a class="active" href="theory.html">Theory</a>
+    </nav>
+
+    <a href="index.html" class="play-btn">
+        Play Now
+    </a>
+
+</header>
+
+
+<main class="theory-container">
+
+    <section class="hero">
+
+        <div class="tag">📚 CYBERSECURITY KNOWLEDGE HUB</div>
+
+        <h1>
+            Learn.
+            <span>Understand.</span>
+            Defend.
+        </h1>
+
+        <p>
+            Learn important cybersecurity concepts before entering
+            the CyberQuest challenge.
+        </p>
+
+    </section>
+
+
+    <section class="topics">
+
+        <div class="topic-card" onclick="showTopic('basics')">
+            <div class="icon">🛡️</div>
+            <h2>Cybersecurity Basics</h2>
+            <p>
+                Understand threats, risks and the fundamentals
+                of protecting digital systems.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+
+        <div class="topic-card" onclick="showTopic('passwords')">
+            <div class="icon">🔐</div>
+            <h2>Passwords & MFA</h2>
+            <p>
+                Learn about strong passwords, password managers
+                and multi-factor authentication.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+
+        <div class="topic-card" onclick="showTopic('phishing')">
+            <div class="icon">🎣</div>
+            <h2>Phishing</h2>
+            <p>
+                Learn how attackers trick users through fake
+                emails, messages and websites.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+
+        <div class="topic-card" onclick="showTopic('malware')">
+            <div class="icon">🦠</div>
+            <h2>Malware</h2>
+            <p>
+                Understand viruses, worms, trojans, spyware
+                and ransomware.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+
+        <div class="topic-card" onclick="showTopic('network')">
+            <div class="icon">🌐</div>
+            <h2>Network Security</h2>
+            <p>
+                Learn about firewalls, VPNs, secure networks
+                and encryption.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+
+        <div class="topic-card" onclick="showTopic('web')">
+            <div class="icon">💻</div>
+            <h2>Web Security</h2>
+            <p>
+                Explore common web vulnerabilities and
+                OWASP security concepts.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+
+        <div class="topic-card" onclick="showTopic('privacy')">
+            <div class="icon">🔒</div>
+            <h2>Privacy & Safe Browsing</h2>
+            <p>
+                Learn how to protect personal information
+                while using the internet.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+
+        <div class="topic-card" onclick="showTopic('backup')">
+            <div class="icon">💾</div>
+            <h2>Backups & Updates</h2>
+            <p>
+                Understand why backups, patches and software
+                updates are important.
+            </p>
+            <button>Learn More →</button>
+        </div>
+
+    </section>
+
+
+    <!-- THEORY CONTENT -->
+
+    <section id="theoryContent" class="theory-content">
+
+        <div class="empty-state">
+
+            <div>📖</div>
+
+            <h2>Select a topic to start learning</h2>
+
+            <p>
+                Choose any cybersecurity topic above.
+                Your quiz questions are based on these concepts.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="quiz-banner">
+
+        <div>
+
+            <span>READY TO TEST YOUR KNOWLEDGE?</span>
+
+            <h2>
+                Learn first. Then defend the system. ⚡
+            </h2>
+
+        </div>
+
+        <a href="index.html" class="start-btn">
+            🎮 Start CyberQuest
+        </a>
+
+    </section>
+
+
+    <section class="sources">
+
+        <h2>🔗 Learn More From Trusted Sources</h2>
+
+        <p>
+            The concepts in this section are based on
+            cybersecurity education resources from trusted organizations.
+        </p>
+
+        <div class="source-links">
+
+            <a href="https://www.nist.gov/itl/smallbusinesscyber/cybersecurity-basics"
+               target="_blank">
+                NIST Cybersecurity Basics ↗
+            </a>
+
+            <a href="https://www.nist.gov/cybersecurity-and-privacy/how-do-i-create-good-password"
+               target="_blank">
+                NIST Password Guidance ↗
+            </a>
+
+            <a href="https://www.nist.gov/itl/smallbusinesscyber/guidance-topic/multi-factor-authentication"
+               target="_blank">
+                NIST MFA Guide ↗
+            </a>
+
+            <a href="https://www.cisa.gov/secure-our-world"
+               target="_blank">
+                CISA Secure Our World ↗
+            </a>
+
+            <a href="https://owasp.org/www-project-top-ten/"
+               target="_blank">
+                OWASP Top 10 ↗
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="theory.js"></script>
+
+</body>
+</html>

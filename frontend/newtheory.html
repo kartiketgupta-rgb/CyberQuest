@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CyberQuest — Cybersecurity Theory</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================
+       RESET
+    ========================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.08), transparent 30%),
+        radial-gradient(circle at 85% 70%, rgba(139, 92, 246, 0.08), transparent 30%),
+        #070b14;
+      color: #e5e7eb;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================================
+       BACKGROUND
+    ========================================= */
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+      background-size: 45px 45px;
+    }
+
+    .orb {
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .orb-one {
+      top: 10%;
+      left: -100px;
+      background: rgba(6, 182, 212, 0.12);
+    }
+
+    .orb-two {
+      right: -100px;
+      bottom: 15%;
+      background: rgba(124, 58, 237, 0.12);
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      backdrop-filter: blur(18px);
+      background: rgba(7, 11, 20, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      width: min(1150px, 92%);
+      margin: auto;
+
+      min-height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: "Orbitron", sans-serif;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #f8fafc;
+      font-size: 20px;
+    }
+
+    .logo span {
+      color: #22d3ee;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 8px;
+      color: #94a3b8;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #67e8f9;
+      background: rgba(6,182,212,0.08);
+    }
+
+    .nav-links .active {
+      color: #67e8f9;
+      background: rgba(6,182,212,0.1);
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero {
+      width: min(1050px, 92%);
+      margin: auto;
+      padding: 90px 0 70px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      border: 1px solid rgba(34,211,238,0.2);
+      border-radius: 999px;
+
+      background: rgba(34,211,238,0.06);
+      color: #67e8f9;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: #22d3ee;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+
+      color: #94a3b8;
+      font-size: 17px;
+    }
+
+    /* =========================================
+       CONTENT
+    ========================================= */
+
+    .container {
+      width: min(1050px, 92%);
+      margin: auto;
+      padding-bottom: 80px;
+    }
+
+    .section-title {
+      margin: 55px 0 22px;
+    }
+
+    .section-label {
+      color: #22d3ee;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 28px;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+      margin-top: 8px;
+    }
+
+    /* =========================================
+       TOPIC GRID
+    ========================================= */
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .topic-card {
+      position: relative;
+
+      padding: 25px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.045),
+          rgba(255,255,255,0.018)
+        );
+
+      transition:
+        transform 0.25s,
+        border-color 0.25s,
+        background 0.25s;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34,211,238,0.3);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(34,211,238,0.07),
+          rgba(255,255,255,0.02)
+        );
+    }
+
+    .topic-number {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+
+      color: rgba(255,255,255,0.2);
+
+      font-family: "Orbitron", sans-serif;
+      font-size: 13px;
+    }
+
+    .topic-icon {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 12px;
+
+      background: rgba(34,211,238,0.08);
+
+      font-size: 24px;
+
+      margin-bottom: 17px;
+    }
+
+    .topic-card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+      color: #f8fafc;
+    }
+
+    .topic-card p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .topic-points {
+      margin-top: 15px;
+      padding-left: 18px;
+      color: #aeb8c8;
+      font-size: 13px;
+    }
+
+    .topic-points li {
+      margin-bottom: 5px;
+    }
+
+    /* =========================================
+       LEARNING PATH
+    ========================================= */
+
+    .learning-path {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .path-card {
+      padding: 22px;
+
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+
+      background: rgba(255,255,255,0.025);
+    }
+
+    .path-number {
+      font-family: "Orbitron", sans-serif;
+      font-size: 24px;
+      color: #22d3ee;
+      margin-bottom: 8px;
+    }
+
+    .path-card h3 {
+      margin-bottom: 7px;
+    }
+
+    .path-card p {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    /* =========================================
+       RESOURCES
+    ========================================= */
+
+    .resources {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .resource-card {
+      padding: 22px;
+
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+
+      background: rgba(255,255,255,0.025);
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .resource-card h3 {
+      margin-bottom: 7px;
+    }
+
+    .resource-card p {
+      color: #94a3b8;
+      font-size: 13px;
+      flex: 1;
+    }
+
+    .resource-tag {
+      display: inline-block;
+      width: fit-content;
+
+      margin: 12px 0;
+
+      padding: 4px 9px;
+
+      border-radius: 6px;
+
+      background: rgba(34,211,238,0.08);
+      color: #67e8f9;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .resource-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px 14px;
+
+      border-radius: 8px;
+
+      background: rgba(34,211,238,0.1);
+      border: 1px solid rgba(34,211,238,0.18);
+
+      color: #67e8f9;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition: 0.2s;
+    }
+
+    .resource-btn:hover {
+      background: rgba(34,211,238,0.18);
+      transform: translateY(-1px);
+    }
+
+    /* =========================================
+       CTA
+    ========================================= */
+
+    .final-cta {
+      margin-top: 65px;
+
+      padding: 45px 25px;
+
+      text-align: center;
+
+      border: 1px solid rgba(34,211,238,0.15);
+      border-radius: 20px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(34,211,238,0.08),
+          transparent 65%
+        );
+    }
+
+    .final-cta h2 {
+      font-family: "Orbitron", sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .final-cta p {
+      color: #94a3b8;
+      margin-bottom: 23px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+      padding: 12px 20px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .cta-primary {
+      background: #06b6d4;
+      color: #061018;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      background: #22d3ee;
+    }
+
+    .cta-secondary {
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #cbd5e1;
+    }
+
+    .cta-secondary:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 28px 0;
+
+      text-align: center;
+
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    footer span {
+      color: #22d3ee;
+    }
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 760px) {
+
+      .nav-inner {
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .topic-grid,
+      .resources {
+        grid-template-columns: 1fr;
+      }
+
+      .learning-path {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+
+
+  <!-- =========================================
+       NAVIGATION
+  ========================================= -->
+
+  <header class="navbar">
+
+    <div class="nav-inner">
+
+      <a href="index.html" class="logo">
+        ⚡ CYBER<span>QUEST</span>
+      </a>
+
+      <nav class="nav-links">
+
+        <a href="index.html">
+          Play
+        </a>
+
+        <a href="index.html#ai-expert">
+          AI Expert
+        </a>
+
+        <a href="index.html#leaderboard">
+          Leaderboard
+        </a>
+
+        <a href="theory.html" class="active">
+          Theory
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+
+  <section class="hero">
+
+    <div class="badge">
+      🛡️ CYBERQUEST LEARNING HUB
+    </div>
+
+    <h1>
+      Learn.<br>
+      <span>Understand.</span><br>
+      Defend.
+    </h1>
+
+    <p>
+      Build your cybersecurity knowledge before entering the battle.
+      Explore important concepts, understand common threats, and
+      strengthen your digital security skills.
+    </p>
+
+  </section>
+
+
+  <!-- =========================================
+       MAIN CONTENT
+  ========================================= -->
+
+  <main class="container">
+
+
+    <!-- =======================================
+         LEARNING PATH
+    ======================================= -->
+
+    <div class="section-title">
+
+      <div class="section-label">
+        LEARNING PATH
+      </div>
+
+      <h2>
+        How to use CyberQuest
+      </h2>
+
+      <p>
+        Follow the learning cycle before testing your knowledge.
+      </p>
+
+    </div>
+
+
+    <div class="learning-path">
+
+      <div class="path-card">
+
+        <div class="path-number">
+          01
+        </div>
+
+        <h3>
+          📚 Learn
+        </h3>
+
+        <p>
+          Understand important cybersecurity concepts and common
+          digital threats.
+        </p>
+
+      </div>
+
+
+      <div class="path-card">
+
+        <div class="path-number">
+          02
+        </div>
+
+        <h3>
+          🧠 Practice
+        </h3>
+
+        <p>
+          Use the concepts you learned to solve cybersecurity
+          questions.
+        </p>
+
+      </div>
+
+
+      <div class="path-card">
+
+        <div class="path-number">
+          03
+        </div>
+
+        <h3>
+          ⚔️ Defend
+        </h3>
+
+        <p>
+          Enter CyberQuest and test your knowledge under pressure.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================
+         CORE TOPICS
+    ======================================= -->
+
+    <div class="section-title">
+
+      <div class="section-label">
+        CORE CONCEPTS
+      </div>
+
+      <h2>
+        Cybersecurity Fundamentals
+      </h2>
+
+      <p>
+        Start with the concepts that every digital user should know.
+      </p>
+
+    </div>
+
+
+    <div class="topic-grid">
+
+
+      <!-- PHISHING -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          01
+        </div>
+
+        <div class="topic-icon">
+          🎣
+        </div>
+
+        <h3>
+          Phishing
+        </h3>
+
+        <p>
+          Phishing is a social engineering technique where attackers
+          attempt to trick people into revealing sensitive information
+          or performing unsafe actions.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Check suspicious links before opening them.
+          </li>
+
+          <li>
+            Be careful with unexpected emails and messages.
+          </li>
+
+          <li>
+            Never share passwords or OTPs through suspicious requests.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- MALWARE -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          02
+        </div>
+
+        <div class="topic-icon">
+          🦠
+        </div>
+
+        <h3>
+          Malware
+        </h3>
+
+        <p>
+          Malware refers to malicious software designed to disrupt,
+          damage, monitor, or gain unauthorized access to systems.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Includes viruses, worms, trojans and spyware.
+          </li>
+
+          <li>
+            Avoid downloading software from untrusted sources.
+          </li>
+
+          <li>
+            Keep operating systems and security software updated.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- RANSOMWARE -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          03
+        </div>
+
+        <div class="topic-icon">
+          🔒
+        </div>
+
+        <h3>
+          Ransomware
+        </h3>
+
+        <p>
+          Ransomware is a type of malware that can prevent access to
+          files or systems and may demand payment from victims.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Maintain regular backups of important files.
+          </li>
+
+          <li>
+            Avoid suspicious attachments and downloads.
+          </li>
+
+          <li>
+            Keep security updates installed.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- PASSWORD -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          04
+        </div>
+
+        <div class="topic-icon">
+          🔐
+        </div>
+
+        <h3>
+          Password Security
+        </h3>
+
+        <p>
+          Strong authentication helps protect accounts from
+          unauthorized access.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Use unique passwords for important accounts.
+          </li>
+
+          <li>
+            Avoid easily guessed personal information.
+          </li>
+
+          <li>
+            Consider using a trusted password manager.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- MFA -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          05
+        </div>
+
+        <div class="topic-icon">
+          🛡️
+        </div>
+
+        <h3>
+          Multi-Factor Authentication
+        </h3>
+
+        <p>
+          MFA adds additional verification beyond a password,
+          making unauthorized account access more difficult.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Enable MFA on important accounts.
+          </li>
+
+          <li>
+            Use authenticator applications when appropriate.
+          </li>
+
+          <li>
+            Never approve unexpected login requests.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- FIREWALL -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          06
+        </div>
+
+        <div class="topic-icon">
+          🔥
+        </div>
+
+        <h3>
+          Firewalls
+        </h3>
+
+        <p>
+          A firewall helps control network traffic according to
+          defined security rules.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Helps control incoming and outgoing traffic.
+          </li>
+
+          <li>
+            Can reduce unauthorized network access.
+          </li>
+
+          <li>
+            Should be configured and maintained appropriately.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- ENCRYPTION -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          07
+        </div>
+
+        <div class="topic-icon">
+          🔑
+        </div>
+
+        <h3>
+          Encryption
+        </h3>
+
+        <p>
+          Encryption transforms readable information into protected
+          data so that unauthorized parties cannot easily understand it.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Helps protect sensitive information.
+          </li>
+
+          <li>
+            Used in secure communications and online services.
+          </li>
+
+          <li>
+            Protects data both during transmission and storage.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- SOCIAL ENGINEERING -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          08
+        </div>
+
+        <div class="topic-icon">
+          🎭
+        </div>
+
+        <h3>
+          Social Engineering
+        </h3>
+
+        <p>
+          Social engineering manipulates people into revealing
+          information or performing actions that may compromise security.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Attackers may use urgency or fear.
+          </li>
+
+          <li>
+            Verify unusual requests independently.
+          </li>
+
+          <li>
+            Do not trust messages only because they appear convincing.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- NETWORK SECURITY -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          09
+        </div>
+
+        <div class="topic-icon">
+          🌐
+        </div>
+
+        <h3>
+          Network Security
+        </h3>
+
+        <p>
+          Network security focuses on protecting devices, systems,
+          communications, and network resources from unauthorized access.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Use secure networks whenever possible.
+          </li>
+
+          <li>
+            Protect routers and network devices.
+          </li>
+
+          <li>
+            Monitor unusual network activity.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+      <!-- WEB SECURITY -->
+
+      <article class="topic-card">
+
+        <div class="topic-number">
+          10
+        </div>
+
+        <div class="topic-icon">
+          🌐
+        </div>
+
+        <h3>
+          Web Security
+        </h3>
+
+        <p>
+          Web security involves protecting websites, web applications,
+          users, and data from common application-level threats.
+        </p>
+
+        <ul class="topic-points">
+
+          <li>
+            Validate and protect user input.
+          </li>
+
+          <li>
+            Use secure authentication practices.
+          </li>
+
+          <li>
+            Keep frameworks and dependencies updated.
+          </li>
+
+        </ul>
+
+      </article>
+
+
+    </div>
+
+
+    <!-- =======================================
+         STUDY RESOURCES
+    ======================================= -->
+
+    <div class="section-title">
+
+      <div class="section-label">
+        STUDY RESOURCES
+      </div>
+
+      <h2>
+        Explore More
+      </h2>
+
+      <p>
+        Continue learning through established cybersecurity resources.
+      </p>
+
+    </div>
+
+
+    <div class="resources">
+
+
+      <!-- NIST -->
+
+      <article class="resource-card">
+
+        <h3>
+          🏛️ NIST Cybersecurity Framework
+        </h3>
+
+        <span class="resource-tag">
+          CYBERSECURITY FRAMEWORK
+        </span>
+
+        <p>
+          Explore cybersecurity guidance and framework resources
+          published by the National Institute of Standards and Technology.
+        </p>
+
+        <a
+          class="resource-btn"
+          href="https://www.nist.gov/cyberframework"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open NIST Resource ↗
+        </a>
+
+      </article>
+
+
+      <!-- OWASP -->
+
+      <article class="resource-card">
+
+        <h3>
+          🕸️ OWASP Top 10
+        </h3>
+
+        <span class="resource-tag">
+          WEB SECURITY
+        </span>
+
+        <p>
+          Learn about important web application security risks
+          through the Open Worldwide Application Security Project.
+        </p>
+
+        <a
+          class="resource-btn"
+          href="https://owasp.org/www-project-top-ten/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open OWASP Top 10 ↗
+        </a>
+
+      </article>
+
+
+      <!-- CISA -->
+
+      <article class="resource-card">
+
+        <h3>
+          🛡️ CISA Cybersecurity
+        </h3>
+
+        <span class="resource-tag">
+          SECURITY AWARENESS
+        </span>
+
+        <p>
+          Explore cybersecurity awareness information and guidance
+          from the Cybersecurity and Infrastructure Security Agency.
+        </p>
+
+        <a
+          class="resource-btn"
+          href="https://www.cisa.gov/topics/cyber-threats-and-advisories"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open CISA Resources ↗
+        </a>
+
+      </article>
+
+
+      <!-- STAY SAFE ONLINE -->
+
+      <article class="resource-card">
+
+        <h3>
+          🌐 Cybersecurity Awareness
+        </h3>
+
+        <span class="resource-tag">
+          ONLINE SAFETY
+        </span>
+
+        <p>
+          Learn practical cybersecurity habits for safer online
+          activity, accounts, devices, and personal information.
+        </p>
+
+        <a
+          class="resource-btn"
+          href="https://www.cisa.gov/secure-our-world"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn Safe Practices ↗
+        </a>
+
+      </article>
+
+
+    </div>
+
+
+    <!-- =======================================
+         FINAL CTA
+    ======================================= -->
+
+    <section class="final-cta">
+
+      <h2>
+        Ready to Defend the System?
+      </h2>
+
+      <p>
+        You learned the concepts. Now put your knowledge to the test.
+      </p>
+
+      <div class="cta-buttons">
+
+        <a
+          href="index.html#play"
+          class="cta-primary"
+        >
+          ⚡ PLAY CYBERQUEST
+        </a>
+
+        <a
+          href="index.html#ai-expert"
+          class="cta-secondary"
+        >
+          🤖 ASK CYBERSHIELD AI
+        </a>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
+
+  <footer>
+
+    <p>
+      ⚡ CYBER<span>QUEST</span>
+      · Learn cybersecurity by defending against hackers.
+    </p>
+
+  </footer>
+
+
+</body>
+</html>

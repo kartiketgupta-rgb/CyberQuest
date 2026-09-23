@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCw4oTDavFbn4JyxYX3p6I9CIMEWVDZQ8I' -H 'Content-Type: application/json' -d '{\"contents\":[{\"role\":\"user\",\"parts\":[{\"text\":\"What is phishing? Answer in 2 sentences.\"}]}]}')",
+      "Bash(python3 -m json.tool)",
+      "Bash(open *)"
+    ]
+  }
+}
