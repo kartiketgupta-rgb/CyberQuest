@@ -23,9 +23,13 @@ app.use(express.json({ limit: "1mb" }));
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 let cachedQuestions = [];
@@ -693,6 +697,8 @@ io.on("connection", socket => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server running on 3000");
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on ${PORT}`);
 });

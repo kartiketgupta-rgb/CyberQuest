@@ -1,5 +1,4 @@
-CREATE DATABASE IF NOT EXISTS cybershield;
-USE cybershield;
+USE defaultdb;
 
 CREATE TABLE IF NOT EXISTS users (
   user_id INT AUTO_INCREMENT PRIMARY KEY,
