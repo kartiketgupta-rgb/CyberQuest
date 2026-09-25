@@ -179,7 +179,7 @@ async function startGame() {
 
     const response =
       await fetch(
-        "http://https://cyberquest-9ig4.onrender.com:3000/create-user",
+        "https://cyberquest-9ig4.onrender.com/create-user",
         {
           method: "POST",
 
@@ -213,7 +213,7 @@ async function startGame() {
 
     const questionResponse =
       await fetch(
-        `https://cyberquest-9ig4.onrender.com:3000/questions?userId=${userId}`
+        `https://cyberquest-9ig4.onrender.com/questions?userId=${userId}`
       );
 
 
@@ -896,7 +896,7 @@ async function markPlayed() {
   try {
 
     await fetch(
-      "https://cyberquest-9ig4.onrender.com:3000/questions/played",
+      "https://cyberquest-9ig4.onrender.com/questions/played",
       {
         method: "POST",
 
@@ -932,7 +932,7 @@ function saveScore() {
 
 
   fetch(
-    "https://cyberquest-9ig4.onrender.com:3000/save-score",
+    "https://cyberquest-9ig4.onrender.com/save-score",
     {
       method: "POST",
 
