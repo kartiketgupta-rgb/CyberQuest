@@ -114,14 +114,35 @@ function pickQuestions(userId, callback) {
   });
 }
 
-app.get("/questions", (req,res) => {
+app.get("/questions", (req, res) => {
+
   const userId = Number(req.query.userId) || null;
+
   pickQuestions(userId, (err, questions) => {
-    if (err) return res.status(500).json({error:"Unable to load questions"});
-    res.json(questions.map(q=>({
-      id:q.question_id, q:q.question_text, options:[q.option1,q.option2,q.option3,q.option4], answer:q.correct_option-1, difficulty:q.difficulty
+
+    if (err) {
+      console.error("GET /questions ERROR:", err);
+      return res.status(500).json({
+        error: "Unable to load questions",
+        details: err.message
+      });
+    }
+
+    res.json(questions.map(q => ({
+      id: q.question_id,
+      q: q.question_text,
+      options: [
+        q.option1,
+        q.option2,
+        q.option3,
+        q.option4
+      ],
+      answer: q.correct_option - 1,
+      difficulty: q.difficulty
     })));
+
   });
+
 });
 
 app.post("/questions/played", (req,res)=>{
