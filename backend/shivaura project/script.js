@@ -80,9 +80,11 @@ function startGame() {
 
       loadQuestion();
     })
-    .catch(() => {
-      document.getElementById("message").innerText = "Unable to create player profile. Check the backend server.";
-    });
+    .catch((err) => {
+    console.error("CREATE USER ERROR:", err);
+    document.getElementById("message").innerText =
+        "Unable to create player: " + err.message;
+});
 }
 
 // Reset game state function
