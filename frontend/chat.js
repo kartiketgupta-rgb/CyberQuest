@@ -78,7 +78,7 @@ async function sendMessage() {
     try {
 
         // Send message to Node.js backend
-        const res = await fetch("http://localhost:3000/api/chat", {
+        const res = await fetch("https://cyberquest-9ig4.onrender.com/api/chat", {
 
             method: "POST",
 

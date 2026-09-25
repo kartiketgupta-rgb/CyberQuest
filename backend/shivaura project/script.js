@@ -11,7 +11,7 @@ let playerName = "";
 let userId = null;
 
 // 🔥 Fetch questions from DB
-fetch("http://localhost:3000/questions")
+fetch("https://cyberquest-9ig4.onrender.com/questions")
   .then(res => res.json())
   .then(data => {
     // Filter out duplicate questions based on question_text
@@ -62,7 +62,7 @@ function startGame() {
   // Reset game state
   resetGame();
 
-  fetch("http://localhost:3000/create-user", {
+  fetch("https://cyberquest-9ig4.onrender.com/create-user", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name: playerName })
@@ -208,7 +208,7 @@ function next() {
 function saveScore() {
   if (!userId) return;
   const score = health;
-  fetch("http://localhost:3000/save-score", {
+  fetch("https://cyberquest-9ig4.onrender.com/save-score", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId, score })
@@ -226,7 +226,7 @@ function showLeaderboard() {
 }
 
 function fetchLeaderboard() {
-  fetch("http://localhost:3000/scores")
+  fetch("https://cyberquest-9ig4.onrender.com/scores")
     .then(res => res.json())
     .then(data => {
       const tbody = document.querySelector("#leaderboardTable tbody");
@@ -248,7 +248,7 @@ function fetchLeaderboard() {
 function showUserScoreboard() {
   if (!userId) return;
   
-  fetch(`http://localhost:3000/user-scores/${userId}`)
+  fetch(`https://cyberquest-9ig4.onrender.com/user-scores/${userId}`)
     .then(res => res.json())
     .then(scores => {
       const scoreboardHTML = `

@@ -179,7 +179,7 @@ async function startGame() {
 
     const response =
       await fetch(
-        "http://localhost:3000/create-user",
+        "http://https://cyberquest-9ig4.onrender.com:3000/create-user",
         {
           method: "POST",
 
@@ -213,7 +213,7 @@ async function startGame() {
 
     const questionResponse =
       await fetch(
-        `http://localhost:3000/questions?userId=${userId}`
+        `https://cyberquest-9ig4.onrender.com:3000/questions?userId=${userId}`
       );
 
 
@@ -896,7 +896,7 @@ async function markPlayed() {
   try {
 
     await fetch(
-      "http://localhost:3000/questions/played",
+      "https://cyberquest-9ig4.onrender.com:3000/questions/played",
       {
         method: "POST",
 
@@ -932,7 +932,7 @@ function saveScore() {
 
 
   fetch(
-    "http://localhost:3000/save-score",
+    "https://cyberquest-9ig4.onrender.com:3000/save-score",
     {
       method: "POST",
 
@@ -973,7 +973,7 @@ function showLeaderboard() {
 function fetchLeaderboard() {
 
   fetch(
-    "http://localhost:3000/scores"
+    "https://cyberquest-9ig4.onrender.com/scores"
   )
 
     .then(
@@ -1322,7 +1322,7 @@ function connectMultiplayer() {
 
   console.log("Connecting to multiplayer server...");
 
-  socket = io("http://localhost:3000", {
+  socket = io("https://cyberquest-9ig4.onrender.com", {
     transports: ["websocket", "polling"]
   });
 
